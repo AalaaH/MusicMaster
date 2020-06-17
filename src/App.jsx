@@ -5,7 +5,12 @@ import './App.css'
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = { 
+            query: ''
+         }
+    }
+    search(){
+        console.log(this.state);
     }
     render() { 
         return ( 
@@ -14,8 +19,18 @@ class App extends Component {
             <div className='App-Title'>
                 Music Master from App</div>
                 <div>
-                    <input placeholder='Search The Artist'/>
-                    <button> Search</button>
+                    <input placeholder='Search The Artist' 
+                    query= {this.state.query}
+                    onChange={event=> {this.setState({query: event.target.value})}}
+                    onKeyPress={ event=>{
+                        if (event.key==='Enter'){
+                            this.search()
+
+                        }}
+                    }
+                        />
+                     
+                    <button onClick={()=> this.search()}> Search</button>
                 </div>
                 <div className='Profile'>
                 <div>Artist Picture </div>
